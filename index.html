@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿼카 - 세상에서 가장 행복한 동물</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #764ba2;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            top: 50px;
+            right: 80px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 3px solid #764ba2;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #764ba2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 15px solid white;
+            filter: drop-shadow(0 3px 0 #764ba2);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .info-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .info-card p, .info-card li {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .info-card ul {
+            list-style-position: inside;
+            margin-top: 10px;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .fact-box h3 {
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+        
+        .gallery {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .gallery h2 {
+            text-align: center;
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .image-item {
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 50px;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .hero-image {
+                height: 250px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>쿼카 (Quokka) <span class="emoji">🦘</span></h1>
+            <p class="subtitle">세상에서 가장 행복한 동물을 만나보세요!</p>
+        </header>
+        
+        <div class="hero-image">
+            <img src="images/quokka-main.jpg" alt="웃고 있는 쿼카" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2220%22%3E이미지를 images 폴더에 넣어주세요%3C/text%3E%3C/svg%3E'">
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h2>쿼카란?</h2>
+                <p>쿼카(Quokka)는 캥거루과에 속하는 작은 유대류 동물입니다. 학명은 Setonix brachyurus이며, 주로 호주 서부 해안과 로트네스트 섬에 서식합니다.</p>
+                <p>몸길이는 약 40-54cm, 꼬리 길이는 25-30cm 정도이며, 체중은 2.5-5kg 정도입니다. 갈색 회색빛 털을 가지고 있으며, 둥근 귀와 짧은 꼬리가 특징입니다.</p>
+            </div>
+            
+            <div class="info-card">
+                <h2>왜 행복한 동물일까?</h2>
+                <p>쿼카는 입꼬리가 자연스럽게 올라가 있어 항상 미소 짓는 것처럼 보입니다. 이러한 표정 때문에 "세상에서 가장 행복한 동물"이라는 별명을 얻었습니다.</p>
+                <p>사람을 두려워하지 않는 친화적인 성격으로 관광객들과 셀피를 찍는 것으로도 유명합니다. SNS에서 #quokkaselfie 해시태그로 많은 사진을 찾아볼 수 있습니다!</p>
+            </div>
+            
+            <div class="info-card">
+                <h2>서식지와 생활</h2>
+                <ul>
+                    <li>주 서식지: 호주 서부, 로트네스트 섬</li>
+                    <li>활동 시간: 주로 야행성</li>
+                    <li>먹이: 풀, 나뭇잎, 과일 등 초식성</li>
+                    <li>수명: 야생에서 약 10년</li>
+                    <li>번식: 연 1회, 임신 기간 약 27일</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>보호 현황</h2>
+                <p>쿼카는 IUCN 적색 목록에서 "취약종(Vulnerable)"으로 분류되어 있습니다. 서식지 파괴와 외래종 포식자 때문에 개체수가 감소하고 있습니다.</p>
+                <div class="fact-box">
+                    <h3>알고 계셨나요?</h3>
+                    <p>쿼카를 만지거나 먹이를 주는 것은 호주 법으로 금지되어 있으며, 위반 시 높은 벌금이 부과됩니다!</p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h2>재미있는 사실들</h2>
+                <ul>
+                    <li>쿼카는 물을 거의 마시지 않고 음식에서 수분을 섭취합니다</li>
+                    <li>위험을 느끼면 새끼를 주머니에서 떨어뜨리고 도망갑니다</li>
+                    <li>나무를 타는 능력이 뛰어납니다</li>
+                    <li>집단으로 생활하며 최대 150마리까지 무리를 이룹니다</li>
+                    <li>2013년부터 SNS 스타로 급부상했습니다</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h2>쿼카 만나기</h2>
+                <p>쿼카를 직접 보고 싶다면 호주 퍼스에서 페리로 약 90분 거리에 있는 로트네스트 섬을 방문하세요!</p>
+                <p>섬에는 약 10,000마리의 쿼카가 서식하고 있으며, 자전거를 타고 섬을 둘러보며 쿼카를 만날 수 있습니다.</p>
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <h2>쿼카 갤러리</h2>
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="images/quokka1.jpg" alt="쿼카 클로즈업" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22200%22%3E%3Crect width=%22250%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3Equokka1.jpg%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="image-item">
+                    <img src="images/quokka2.jpg" alt="서있는 쿼카" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22200%22%3E%3Crect width=%22250%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3Equokka2.jpg%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="image-item">
+                    <img src="images/quokka3.jpg" alt="먹이를 먹는 쿼카" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22200%22%3E%3Crect width=%22250%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3Equokka3.jpg%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="image-item">
+                    <img src="images/quokka4.jpg" alt="정면을 보는 쿼카" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22200%22%3E%3Crect width=%22250%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3Equokka4.jpg%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>쿼카와 함께 행복한 하루 보내세요! <span class="emoji">😊</span></p>
+            <p>&copy; 2024 쿼카 소개 페이지</p>
+        </footer>
+    </div>
+</body>
+</html>
